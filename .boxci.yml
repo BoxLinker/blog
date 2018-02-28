@@ -1,0 +1,14 @@
+pipelines:
+  build:
+    image: node:alpine
+    commands:
+      - npm install
+      - hexo generate
+  publish:
+    image: plugins/docker
+    repo: index.boxlinker.com/boxlinker/blog
+    tags: latest
+    commit.sha: d8dbe4d94f15fe89232e0402c6e8a0ddf21af3ab
+    docker.registry: index.boxlinker.com
+    docker.username: boxlinker
+    docker.password: QAZwsx123
