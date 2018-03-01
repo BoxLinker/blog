@@ -1,4 +1,4 @@
-pipelines:
+pipeline:
   build:
     image: node:alpine
     commands:
