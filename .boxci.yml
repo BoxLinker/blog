@@ -12,3 +12,4 @@ pipelines:
     docker.registry: index.boxlinker.com
     docker.username: boxlinker
     docker.password: QAZwsx123
+  
