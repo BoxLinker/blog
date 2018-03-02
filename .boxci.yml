@@ -3,7 +3,7 @@ pipelines:
     image: node:alpine
     commands:
       - npm install
-      - hexo generate
+      - ./node_modules/.bin/hexo generate
   publish:
     image: plugins/docker
     repo: index.boxlinker.com/boxlinker/blog
