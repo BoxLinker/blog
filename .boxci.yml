@@ -7,14 +7,14 @@ pipeline:
       - ./node_modules/.bin/hexo generate
   publish:
     image: plugins/docker
-    repo: index.boxlinker.com/boxlinker/blog
-    tags: latest
-    privileged: true
+    # repo: index.boxlinker.com/boxlinker/blog
+    # tags: latest
     commands:
       - pwd
       - ls
+    privileged: true
     environment:
-    - DRONE_COMMIT_SHA=d8dbe4d94f15fe89232e0402c6e8a0ddf21af3ab
+    # - DRONE_COMMIT_SHA=d8dbe4d94f15fe89232e0402c6e8a0ddf21af3ab
     - PLUGIN_REGISTRY=index.boxlinker.com
     - PLUGIN_USERNAME=boxlinker
     - PLUGIN_PASSWORD=QAZwsx123
