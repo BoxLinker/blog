@@ -1,3 +1,3 @@
 FROM index.boxlinker.com/library/nginx:alpine
 
-COPY ./public /usr/share/nginx/html
+COPY /boxci/src/github.com/BoxLinker/blog/public /usr/share/nginx/html
