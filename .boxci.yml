@@ -9,7 +9,8 @@ pipeline:
     repo: index.boxlinker.com/boxlinker/blog
     tags: latest
     privileged: true
-    commit.sha: d8dbe4d94f15fe89232e0402c6e8a0ddf21af3ab
-    docker.registry: index.boxlinker.com
-    docker.username: boxlinker
-    docker.password: QAZwsx123
+    environment:
+    - DRONE_COMMIT_SHA=d8dbe4d94f15fe89232e0402c6e8a0ddf21af3ab
+    - PLUGIN_REGISTRY=index.boxlinker.com
+    - PLUGIN_USERNAME=boxlinker
+    - PLUGIN_PASSWORD=QAZwsx123
