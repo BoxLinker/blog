@@ -5,13 +5,17 @@ pipeline:
       - npm install --registry=https://registry.npm.taobao.org
       - cp ./themes/hueman/_config.yml.example ./themes/hueman/_config.yml
       - ./node_modules/.bin/hexo generate
-  publish:
-    image: plugins/docker
-    repo: index.boxlinker.com/boxlinker/blog
-    tags: latest
-    privileged: true
-    environment:
-    # - DRONE_COMMIT_SHA=d8dbe4d94f15fe89232e0402c6e8a0ddf21af3ab
-    - PLUGIN_REGISTRY=index.boxlinker.com
-    - PLUGIN_USERNAME=boxlinker
-    - PLUGIN_PASSWORD=QAZwsx123
+  # publish:
+  #   image: plugins/docker
+  #   repo: index.boxlinker.com/boxlinker/blog
+  #   tags: latest
+  #   privileged: true
+  #   environment:
+  #   - PLUGIN_REGISTRY=index.boxlinker.com
+  #   - PLUGIN_USERNAME=boxlinker
+  #   - PLUGIN_PASSWORD=QAZwsx123
+publish:
+  environment:
+  - PLUGIN_REGISTRY=index.boxlinker.com
+  - PLUGIN_USERNAME=boxlinker
+  - PLUGIN_PASSWORD=QAZwsx123
