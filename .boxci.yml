@@ -1,9 +1,10 @@
-pipeline:
-  clone:
+clone:
+  git:
     image: index.boxlinker.com/boxlinker/cicd-plugins-git:latest
     auth_config:
       username: boxlinker
       password: QAZwsx123
+pipeline:
   build:
     image: node:alpine
     commands:
