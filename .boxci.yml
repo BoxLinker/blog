@@ -1,4 +1,9 @@
 pipeline:
+  clone:
+    image: index.boxlinker.com/boxlinker/cicd-plugins-git:latest
+    auth_config:
+      username: boxlinker
+      password: QAZwsx123
   build:
     image: node:alpine
     commands:
@@ -15,6 +20,9 @@ pipeline:
   #   - PLUGIN_USERNAME=boxlinker
   #   - PLUGIN_PASSWORD=QAZwsx123
 publish:
+  auth_config:
+    username: boxlinker
+    password: QAZwsx123
   environment:
   - PLUGIN_REGISTRY=index.boxlinker.com
   - PLUGIN_USERNAME=boxlinker
