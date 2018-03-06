@@ -7,10 +7,10 @@ pipeline:
   publish:
     image: plugins/docker
     repo: index.boxlinker.com/boxlinker/blog
-    tags.auto: true
     privileged: true
     environment:
     # 需要推送的镜像库的 registry 以及用户名、密码
+    - PLUGIN_AUTO_TAG=true
     - PLUGIN_REGISTRY=index.boxlinker.com
     - PLUGIN_USERNAME=boxlinker
     - PLUGIN_PASSWORD=QAZwsx123
