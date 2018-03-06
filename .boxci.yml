@@ -3,7 +3,6 @@ pipeline:
     image: node:alpine
     commands:
       - npm install --registry=https://registry.npm.taobao.org
-      - cp ./themes/hueman/_config.yml.example ./themes/hueman/_config.yml
       - ./node_modules/.bin/hexo generate
   publish:
     image: plugins/docker
