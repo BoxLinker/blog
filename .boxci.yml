@@ -2,13 +2,15 @@ pipeline:
   build:
     image: node:alpine
     commands:
-      - npm install
-      - hexo generate
+      - npm install --registry=https://registry.npm.taobao.org
+      - ./node_modules/.bin/hexo generate
   publish:
     image: plugins/docker
     repo: index.boxlinker.com/boxlinker/blog
-    tags: latest
-    commit.sha: d8dbe4d94f15fe89232e0402c6e8a0ddf21af3ab
-    docker.registry: index.boxlinker.com
-    docker.username: boxlinker
-    docker.password: QAZwsx123
+    privileged: true
+    environment:
+    # 需要推送的镜像库的 registry 以及用户名、密码
+    - PLUGIN_AUTO_TAG=true
+    - PLUGIN_REGISTRY=index.boxlinker.com
+    - PLUGIN_USERNAME=boxlinker
+    - PLUGIN_PASSWORD=QAZwsx123
