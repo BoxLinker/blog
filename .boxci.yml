@@ -11,6 +11,7 @@ pipeline:
     environment:
     # 需要推送的镜像库的 registry 以及用户名、密码
     - PLUGIN_AUTO_TAG=true
+    - DRONE_REPO_BRANCH=master # 如果 PLUGIN_AUTO_TAG 为 true，则必须指定分支
     - PLUGIN_REGISTRY=index.boxlinker.com
     - PLUGIN_USERNAME=boxlinker
     - PLUGIN_PASSWORD=QAZwsx123
