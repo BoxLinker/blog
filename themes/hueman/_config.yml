@@ -16,7 +16,7 @@ customize:
     sidebar: left # sidebar position, options: left, right
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: # path to favicon
-    # social_links: # for more icons, please see http://fontawesome.io/icons/#brand
+    social_links: # for more icons, please see http://fontawesome.io/icons/#brand
         # twitter: /
         # facebook: /
         # google-plus: /
