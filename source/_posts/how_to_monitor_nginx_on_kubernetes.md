@@ -8,7 +8,7 @@ tags:
 
 原文链接 [How to monitor Nginx on Kubernetes](https://sysdig.com/blog/monitor-nginx-kubernetes/)
 
-![](https://478h5m1yrfsa3bbe262u7muv-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/Kubernetes_Nginx_1.jpg)
+{% asset_img Kubernetes_Nginx_1.jpg %}
 
 这篇文章里我们将展示如何在 kubernetes 上监控 nginx，介绍不同的使用示例，在平台上运行的特性和相关维度，以及 dashboards 和 alerts。
 
