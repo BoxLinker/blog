@@ -1,5 +1,5 @@
 ---
-title: JavaScript 中的 Promise
+title: JavaScript 中的 Promise 简易实现
 date: 2018-03-19 13:31:05
 tags:
 - JavaScript
@@ -8,10 +8,7 @@ tags:
 - 异步
 ---
 
-# 浏览器支持和 Polyfil
-
-在 Chrome 32、Opera 19、Firefox 29、Safari 8 和 Microsoft Edge 中，promise 默认启用。
-
+使用 es6 中的 promise 很久了，但是一直也没时间研究一下到底是怎么实现的，今天就抽了点空看了一下 [es6-promise](https://github.com/stefanpenner/es6-promise) 的源码，并从中抽离出了一个简易版本，这个简易版本只是为了说明 promise 的实现原理而已，不能拿来用的。话不多说，直接先上代码：
 
 ``` javascript
 const PENDING = void 0;
@@ -141,6 +138,7 @@ class Promise {
   }
 }
 
+// demo
 const promise1 = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve('promise1 resolve')
@@ -165,3 +163,16 @@ const promise1 = new Promise((resolve, reject) => {
 ;
 
 ```
+
+您可以在 [codpen](https://codepen.io/anon/pen/qoqJGx?editors=1112) 中找到此代码.
+
+这份代码去除了很多校验逻辑，以及 asap 方法的 queue 缓冲等等，所以只是用来说明问题的，基本由一下几部分组成的：
+* promise 的状态定义 `PENDING` `FULFILLED` `REJECTED`
+* `promise` 类实现
+* `then` 方法的实现
+* 一些工具方法比如：`resolve` `reject` 等等。
+
+需要说明的是 promise 的初始状态是 `undefined`，resolve 或者 reject 之后状态改变为对应的 `FULFILLED` 或 `REJECTED`。
+
+
+简单描述一下实现逻辑：promise 的处理函数中可以立即回调 `resolve/reject` 或者是延迟（异步）回调，所以在 `then` 方法的实现中如果 promise 的状态存在，说明处理函数是立即回调，那么就可以立即调用 asap 来处理 callback；如果不存在，说明处理函数异步回调了，那么就把当前要处理的 callback 注册到 subscribers 中，当此 promise 被 resolve 或者 reject 的时候，在最终调用的 fulfill 方法里调用之前注册在 subscribers 中的 callback，最后返回的新建的 child 以达到链式调用的效果。
